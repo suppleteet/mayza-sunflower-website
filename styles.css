@@ -1,8 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Unkempt:wght@400;700&family=Nunito:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Nunito:wght@400;500;600;700;800&display=swap");
 
 :root {
-  --cream: #faf7f2;
-  --paper: #fdfcfa;
+  --cream: #ffffff;
+  --paper: #ffffff;
+  --panel-yellow: #fdf4dc;
+  --header-yellow: #fbf0cd;
+  --header-line: #efdfa9;
   --butter: #e8d9a8;
   --butter-light: #f5eed7;
   --peach: #ddbfa3;
@@ -64,10 +67,10 @@ h2,
 h3 {
   margin: 0;
   color: var(--olive-dark);
-  font-family: "Unkempt", "Segoe Print", "Comic Sans MS", cursive;
-  font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: 0;
+  font-family: inherit;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 h1 {
@@ -121,9 +124,8 @@ sup {
   justify-content: space-between;
   min-height: 76px;
   padding: 0.7rem 4vw;
-  background: rgba(253, 251, 247, 0.95);
-  border-bottom: 1px solid rgba(227, 220, 208, 0.85);
-  backdrop-filter: blur(12px);
+  background: var(--header-yellow);
+  border-bottom: 1px solid var(--header-line);
 }
 
 .brand {
@@ -132,9 +134,10 @@ sup {
   gap: 0.7rem;
   min-height: 52px;
   color: var(--olive-dark);
-  font-family: "Unkempt", "Segoe Print", "Comic Sans MS", cursive;
-  font-size: 1.28rem;
-  font-weight: 700;
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
   text-decoration: none;
 }
 
@@ -197,7 +200,7 @@ sup {
 .home-hero {
   min-height: calc(92svh - 76px);
   padding: 4rem 5vw 5.5rem;
-  background: var(--cream);
+  background: #ffffff;
 }
 
 .home-hero::before,
@@ -229,6 +232,16 @@ sup {
 .page-hero {
   min-height: 360px;
   padding: 4.5rem 5vw 5.5rem;
+  background: var(--panel-yellow);
+}
+
+/* Cabin Sketch is reserved for the headline directly beneath the logo. */
+.home-hero h1,
+.page-hero h1 {
+  font-family: "Cabin Sketch", "Segoe Print", "Comic Sans MS", cursive;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
 }
 
 .hero-logo {
@@ -238,14 +251,6 @@ sup {
   object-fit: contain;
 }
 
-.page-hero-logo {
-  width: 108px;
-  height: 108px;
-  margin: 0 auto 1.2rem;
-  object-fit: contain;
-}
-
-.eyebrow,
 .section-label {
   margin: 0 0 0.9rem;
   color: var(--terracotta);
@@ -259,45 +264,6 @@ sup {
   margin: 1.1rem auto 0;
   color: var(--muted);
   font-size: 1.17rem;
-}
-
-.hero-actions {
-  display: flex;
-  justify-content: center;
-  gap: 0.85rem;
-  flex-wrap: wrap;
-  margin-top: 2.75rem;
-}
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 154px;
-  min-height: 46px;
-  padding: 0.72rem 1rem;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
-}
-
-.button:hover,
-.button:focus-visible {
-  transform: translateY(-2px);
-}
-
-.button-primary {
-  background: var(--olive);
-  color: white;
-  box-shadow: 0 12px 24px rgba(143, 106, 76, 0.16);
-}
-
-.button-secondary {
-  background: var(--paper);
-  border-color: var(--line);
-  color: var(--olive-dark);
 }
 
 .section {
@@ -324,28 +290,21 @@ sup {
   margin-bottom: 0;
 }
 
-.pastel-paper {
-  background: var(--cream);
-}
-
-.pastel-garden {
-  background: var(--cream);
-}
-
-.pastel-sky {
-  background: var(--cream);
-}
-
-.pastel-peach {
-  background: var(--cream);
-}
-
+.pastel-paper,
 .pastel-rose {
-  background: var(--cream);
+  background: #ffffff;
 }
 
+.pastel-garden,
+.pastel-sky,
+.pastel-peach,
 .pastel-yellow {
-  background: var(--cream);
+  background: var(--panel-yellow);
+}
+
+.page-hero.pastel-paper,
+.page-hero.pastel-rose {
+  background: var(--panel-yellow);
 }
 
 .intro-grid,
@@ -400,6 +359,11 @@ sup {
   border-radius: 8px;
   background: var(--paper);
   box-shadow: none;
+}
+
+.quiet-panel {
+  border-color: var(--header-line);
+  background: var(--panel-yellow);
 }
 
 .quiet-panel,
@@ -542,6 +506,35 @@ sup {
   padding-block: 0.5rem;
 }
 
+.founder-head {
+  display: flex;
+  align-items: center;
+  gap: 1.35rem;
+  margin-bottom: 1.4rem;
+}
+
+.founder-head .section-label {
+  margin-bottom: 0.35rem;
+}
+
+.founder-head h2 {
+  margin-bottom: 0;
+}
+
+.founder-portrait {
+  flex: none;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 6px var(--panel-yellow), 0 10px 22px rgba(101, 65, 38, 0.16);
+}
+
+/* Inside a yellow panel the ring would vanish, so ring in white instead. */
+.legacy-band .founder-portrait {
+  box-shadow: 0 0 0 6px #ffffff, 0 10px 22px rgba(101, 65, 38, 0.16);
+}
+
 .care-list {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -581,7 +574,7 @@ sup {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 253, 248, 0.84);
+  background: #ffffff;
   box-shadow: 0 10px 30px rgba(78, 62, 38, 0.06);
 }
 
@@ -635,14 +628,15 @@ sup {
 
 .story-accent {
   padding: 1.8rem;
-  border-left: 4px solid var(--peach);
-  background: var(--paper);
+  border-left: 4px solid var(--sun);
+  border-radius: 0 8px 8px 0;
+  background: var(--panel-yellow);
 }
 
 .legacy-band {
   padding: 2rem;
   border-radius: 8px;
-  background: var(--paper);
+  background: var(--panel-yellow);
 }
 
 .wide-copy {
@@ -664,7 +658,7 @@ sup {
   padding: 0.55rem 0.85rem;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(253, 251, 247, 0.85);
+  background: var(--panel-yellow);
   color: var(--olive-dark);
 }
 
@@ -697,9 +691,9 @@ td {
 th {
   background: var(--butter-light);
   color: var(--olive-dark);
-  font-family: "Unkempt", "Segoe Print", "Comic Sans MS", cursive;
+  font-family: inherit;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 tr:last-child td {
@@ -719,9 +713,9 @@ td:first-child {
 .card-title {
   margin-bottom: 0.5rem;
   color: var(--olive-dark);
-  font-family: "Unkempt", "Segoe Print", "Comic Sans MS", cursive;
+  font-family: inherit;
   font-size: 2.1rem;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.2;
 }
 
@@ -765,7 +759,8 @@ dd {
 .site-footer {
   padding: 1.6rem 5vw;
   text-align: center;
-  background: var(--peach-light);
+  background: var(--panel-yellow);
+  border-top: 1px solid var(--header-line);
   color: var(--muted);
 }
 
@@ -789,8 +784,8 @@ dd {
     display: grid;
     gap: 0;
     padding: 1rem 4vw 1.4rem;
-    background: var(--paper);
-    border-bottom: 1px solid var(--line);
+    background: var(--header-yellow);
+    border-bottom: 1px solid var(--header-line);
     box-shadow: 0 18px 28px rgba(70, 62, 55, 0.12);
     transform: translateY(-125%);
     transition: transform 200ms ease;
@@ -802,7 +797,7 @@ dd {
 
   .site-nav a {
     min-height: 48px;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--header-line);
   }
 
   .nav-toggle {
@@ -878,22 +873,8 @@ dd {
     height: 250px;
   }
 
-  .page-hero-logo {
-    width: 118px;
-    height: 118px;
-  }
-
   .hero-copy {
     font-size: 1.02rem;
-  }
-
-  .hero-actions {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .button {
-    width: 100%;
   }
 
   .section {
@@ -927,6 +908,15 @@ dd {
 
   .pillar-copy h3 {
     font-size: 1.35rem;
+  }
+
+  .founder-head {
+    gap: 1rem;
+  }
+
+  .founder-portrait {
+    width: 108px;
+    height: 108px;
   }
 
   .story-accent,
