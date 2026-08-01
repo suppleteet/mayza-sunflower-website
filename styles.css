@@ -198,8 +198,8 @@ sup {
 }
 
 .home-hero {
-  min-height: calc(92svh - 76px);
-  padding: 4rem 5vw 5.5rem;
+  min-height: 0;
+  padding: 1.25rem 5vw 2.25rem;
   background: #ffffff;
 }
 
@@ -208,7 +208,6 @@ sup {
   display: none;
 }
 
-.home-hero::after,
 .page-hero::after {
   content: "";
   position: absolute;
@@ -230,8 +229,8 @@ sup {
 }
 
 .page-hero {
-  min-height: 360px;
-  padding: 4.5rem 5vw 5.5rem;
+  min-height: 0;
+  padding: 3rem 5vw 3.25rem;
   background: var(--panel-yellow);
 }
 
@@ -245,18 +244,27 @@ sup {
 }
 
 .hero-logo {
-  width: 380px;
-  height: 380px;
-  margin: 0 auto 1.5rem;
+  width: 340px;
+  height: 340px;
+  margin: 0 auto 0.35rem;
   object-fit: contain;
 }
 
 .section-label {
-  margin: 0 0 0.9rem;
-  color: var(--terracotta);
-  font-size: 0.82rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+  color: var(--olive-dark);
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* The sentence that follows a section-label reads as its subheading, so it
+   should be visually quieter than the label itself. */
+.section-label + h2 {
+  color: var(--muted);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: normal;
 }
 
 .hero-copy {
@@ -264,6 +272,18 @@ sup {
   margin: 1.1rem auto 0;
   color: var(--muted);
   font-size: 1.17rem;
+}
+
+/* Page headline + subtext relocated out of the hero, above the first block. */
+.lead-copy {
+  max-width: 720px;
+  margin: 1.1rem auto 0;
+  color: var(--muted);
+  font-size: 1.12rem;
+}
+
+.center-heading .lead-copy {
+  margin-bottom: 0;
 }
 
 .section {
@@ -662,6 +682,26 @@ sup {
   color: var(--olive-dark);
 }
 
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.photo-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  padding: 1.25rem;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  background: var(--panel-yellow);
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
 .rhythm-intro {
   position: sticky;
   top: 104px;
@@ -757,7 +797,7 @@ dd {
 }
 
 .site-footer {
-  padding: 1.6rem 5vw;
+  padding: 2.25rem 5vw;
   text-align: center;
   background: var(--panel-yellow);
   border-top: 1px solid var(--header-line);
@@ -767,6 +807,26 @@ dd {
 .site-footer p {
   margin: 0;
   font-size: 0.85rem;
+}
+
+.footer-contact {
+  color: var(--olive-dark);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.footer-contact a {
+  text-decoration-color: var(--sun);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.site-footer p + p {
+  margin-top: 0.35rem;
+}
+
+.site-footer p:last-child {
+  margin-top: 0.85rem;
 }
 
 @media (max-width: 980px) {
@@ -818,6 +878,10 @@ dd {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .care-list {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -860,7 +924,7 @@ dd {
 
   .home-hero {
     min-height: auto;
-    padding: 2.75rem 1.25rem 4.5rem;
+    padding: 1rem 1.25rem 2rem;
   }
 
   .page-hero {
@@ -883,6 +947,10 @@ dd {
 
   .feature-grid,
   .feature-grid.three {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-grid {
     grid-template-columns: 1fr;
   }
 
