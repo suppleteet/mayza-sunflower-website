@@ -22,8 +22,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         super().end_headers()
 
 
-class Server(socketserver.TCPServer):
+class Server(socketserver.ThreadingMixIn, socketserver.TCPServer):
     allow_reuse_address = True
+    daemon_threads = True
 
 
 if __name__ == "__main__":
