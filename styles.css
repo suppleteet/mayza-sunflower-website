@@ -573,6 +573,48 @@ sup {
   box-shadow: 0 0 0 6px #ffffff, 0 10px 22px rgba(101, 65, 38, 0.16);
 }
 
+.team-members {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+  margin-top: 2.25rem;
+}
+
+.team-member {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin: 0;
+}
+
+.team-member .founder-portrait {
+  width: 104px;
+  height: 104px;
+}
+
+.team-member .section-label {
+  margin-bottom: 0.3rem;
+}
+
+.team-member h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.facility-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.facility-grid img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
 .care-list {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -1098,6 +1140,11 @@ dd {
 
   .care-list article {
     min-height: auto;
+  }
+
+  .team-members,
+  .facility-grid {
+    grid-template-columns: 1fr;
   }
 
   .feature-card {
