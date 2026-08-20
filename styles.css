@@ -582,23 +582,28 @@ sup {
 
 .team-member {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
   gap: 1.1rem;
   margin: 0;
 }
 
-.team-member .founder-portrait {
-  width: 104px;
-  height: 104px;
+.team-portrait {
+  width: 100%;
+  max-width: 240px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px var(--panel-yellow), 0 10px 22px rgba(101, 65, 38, 0.16);
 }
 
-.team-member .section-label {
-  margin-bottom: 0.3rem;
-}
-
-.team-member h3 {
+.team-member figcaption h2 {
   margin: 0;
-  font-size: 1.2rem;
+}
+
+.facility-band {
+  padding-top: 1.5rem;
 }
 
 .facility-grid {
@@ -609,10 +614,40 @@ sup {
 
 .facility-grid img {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border: 1px solid var(--line);
   border-radius: 8px;
+}
+
+.contact-cta-label {
+  margin: 2rem 0 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--olive-dark);
+}
+
+.contact-cta {
+  margin: 0;
+}
+
+.email-button {
+  display: inline-block;
+  padding: 0.9rem 1.85rem;
+  border-radius: 999px;
+  background: var(--olive-dark);
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.email-button:hover,
+.email-button:focus-visible {
+  background: var(--olive);
+  transform: translateY(-1px);
 }
 
 .care-list {
