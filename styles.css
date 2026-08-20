@@ -964,6 +964,14 @@ td:first-child {
   background: var(--paper);
 }
 
+.program-card p a {
+  color: var(--olive-dark);
+  font-weight: 700;
+  text-decoration-color: var(--sun);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
 .card-title {
   margin-bottom: 0.5rem;
   color: var(--olive-dark);
