@@ -201,17 +201,6 @@ sup {
   display: none;
 }
 
-.page-hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 6px;
-  background: var(--butter);
-  opacity: 0.72;
-}
-
 .home-hero-inner,
 .page-hero-inner {
   position: relative;
