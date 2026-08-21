@@ -609,7 +609,7 @@ sup {
 
 .facility-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1.5rem;
 }
 
@@ -618,6 +618,11 @@ sup {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
+}
+
+.facility-tile:first-child {
+  grid-column: 1 / -1;
+  aspect-ratio: 2 / 1;
 }
 
 .facility-tile img {
