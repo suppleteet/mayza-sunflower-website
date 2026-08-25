@@ -30,6 +30,37 @@ if (navToggle && siteNav) {
   });
 }
 
+const emailForm = document.querySelector("[data-email-form]");
+
+if (emailForm) {
+  const emailStatus = emailForm.querySelector("[data-email-status]");
+
+  emailForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!emailForm.reportValidity()) {
+      return;
+    }
+
+    const formData = new FormData(emailForm);
+    const message = formData.get("message").trim();
+    const lines = [
+      `Name: ${formData.get("parent-name").trim()}`,
+      `Email: ${formData.get("parent-email").trim()}`,
+      `Child's age: ${formData.get("child-age").trim()}`,
+      `Preferred days: ${formData.get("preferred-days").trim() || "Not specified"}`,
+      `Desired start date: ${formData.get("start-date").trim() || "Not specified"}`,
+    ];
+
+    if (message) {
+      lines.push("", "Message:", message);
+    }
+
+    window.location.href = `mailto:mayza@sunflowergardennursery.com?subject=${encodeURIComponent("Sunflower Garden inquiry")}&body=${encodeURIComponent(lines.join("\n"))}`;
+    emailStatus.textContent = "Your email app is opening with your note ready to send.";
+  });
+}
+
 const photoTiles = Array.from(document.querySelectorAll(".photo-tile"));
 const lightbox = document.getElementById("lightbox");
 

@@ -7,7 +7,7 @@
     <title>Contact, Tours &amp; Enrollment | Sunflower Garden Nursery School</title>
     <meta
       name="description"
-      content="Schedule a personal tour and review enrollment details, program hours, and what our program includes at Sunflower Garden Nursery School in Belvedere Tiburon, California."
+      content="Ask about tours, enrollment, hours, attendance options, and availability at Sunflower Garden Nursery School in Tiburon."
     >
     <link rel="icon" href="assets/sunflower-logo-refined.png">
     <link rel="stylesheet" href="styles.css">
@@ -16,6 +16,10 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header">
+      <a class="header-brand" href="index.html" aria-label="Sunflower Garden Nursery School home">
+        <img src="assets/sunflower-logo-refined.png" alt="">
+        <span>Sunflower Garden Nursery School</span>
+      </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span class="sr-only">Open menu</span>
         <span class="nav-toggle-line"></span>
@@ -24,137 +28,105 @@
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
         <a href="daily-life.html">Daily Life</a>
         <a href="photos.html">Photos</a>
-        <a href="contact.html" aria-current="page">Contact Us</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" aria-current="page">Contact</a>
       </nav>
     </header>
 
     <main id="main">
       <section class="page-hero pastel-rose">
         <div class="page-hero-inner">
-          <h1>Contact Us</h1>
+          <h1>Contact</h1>
+          <p class="hero-copy">We would love to hear a little about your family.</p>
         </div>
       </section>
 
       <section class="section pastel-paper">
-        <div class="section-shell">
-          <div class="center-heading">
-            <h2>We would be delighted to meet your family.</h2>
-            <p class="lead-copy">
-              A personal tour provides the opportunity to experience our home environment, learn about
-              our philosophy, observe our daily rhythm, and ask any questions you may have.
-            </p>
-            <p class="contact-cta-label">Reach us anytime by email</p>
-            <p class="contact-cta">
-              <a class="email-button" href="mailto:mayza@sunflowergardennursery.com">mayza@sunflowergardennursery.com</a>
-            </p>
-          </div>
-
-          <div class="contact-grid">
-          <article class="program-card">
-            <h2 class="card-title">Tour Visits</h2>
-            <p class="card-subtitle">Come experience the rhythm of the home.</p>
-            <p>
-              Choosing the right early childhood program is an important decision, and we would be
-              delighted to meet your family.
-            </p>
-            <p>
-              Please contact us by phone or email to schedule a tour. During the day our attention is
-              devoted to the children, so if we are unable to answer your call, please leave a
-              voicemail or send a text message, and we will return your inquiry as soon as possible.
-            </p>
+        <div class="section-shell contact-grid">
+          <article class="program-card contact-primary">
+            <p class="section-label">Write to Mayza</p>
+            <h2>Begin with a note.</h2>
+            <p>Share a few details below and your email app will open with a ready-to-send note.</p>
+            <form class="contact-form" data-email-form>
+              <div class="form-row">
+                <p class="form-field">
+                  <label for="parent-name">Your name</label>
+                  <input id="parent-name" name="parent-name" type="text" autocomplete="name" required>
+                </p>
+                <p class="form-field">
+                  <label for="parent-email">Your email</label>
+                  <input id="parent-email" name="parent-email" type="email" autocomplete="email" required>
+                </p>
+              </div>
+              <div class="form-row">
+                <p class="form-field">
+                  <label for="child-age">Child's age</label>
+                  <input id="child-age" name="child-age" type="text" required>
+                </p>
+                <p class="form-field">
+                  <label for="preferred-days">Preferred days</label>
+                  <input id="preferred-days" name="preferred-days" type="text" placeholder="For example: Tuesday–Thursday">
+                </p>
+              </div>
+              <p class="form-field">
+                <label for="start-date">Desired start date</label>
+                <input id="start-date" name="start-date" type="text" placeholder="For example: September 2026">
+              </p>
+              <p class="form-field">
+                <label for="message">Anything else you'd like Mayza to know?</label>
+                <textarea id="message" name="message" rows="5"></textarea>
+              </p>
+              <button class="email-button" type="submit">Email Mayza</button>
+              <p class="form-note" data-email-status aria-live="polite"></p>
+            </form>
           </article>
 
           <aside class="program-card hours-card">
-            <h2 class="card-title">Privacy &amp; Safety</h2>
-            <p class="card-subtitle">Address shared by appointment.</p>
+            <p class="section-label">Come Visit</p>
+            <h2>See Sunflower Garden for yourself.</h2>
             <p>
-              For the privacy and safety of the children in our care, our address is not published
-              online. Tour details are shared directly with families after scheduling.
-            </p>
-            <p>
-              We look forward to welcoming you to the Sunflower Garden Nursery School community and
-              partnering with your family during these precious early years of childhood.
-            </p>
-          </aside>
-          </div>
-        </div>
-      </section>
-
-      <section class="section pastel-garden" id="enrollment">
-        <div class="section-shell split-copy">
-          <div>
-            <p class="section-label">Enrollment</p>
-            <h2>For children from 3 months through kindergarten age.</h2>
-          </div>
-          <div>
-            <p>
-              Sunflower Garden Nursery School welcomes children from 3 months through kindergarten
-              age into our nurturing, home-based program.
-            </p>
-            <p>
-              Through continuity of care, children develop confidence, independence, emotional
-              security, and a genuine love of learning, creating a strong foundation for their
-              transition to preschool or kindergarten when they are developmentally ready.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section pastel-paper">
-        <div class="section-shell enrollment-grid">
-          <article class="program-card">
-            <h2>What Our Program Includes</h2>
-            <ul class="check-list">
-              <li>Homemade breakfast, lunch, and afternoon snacks made with fresh, wholesome ingredients</li>
-              <li>A warm, home-based setting with a low teacher-to-child ratio</li>
-              <li>Ongoing communication and partnership with families to support each child's development</li>
-            </ul>
-            <p>
-              For the full Waldorf- and RIE<sup>&reg;</sup>-inspired daily experience — activities,
-              rhythm, meals, and outdoor life — see <a href="daily-life.html">Daily Life</a>.
-            </p>
-          </article>
-
-          <aside class="program-card hours-card">
-            <h2>Program Hours</h2>
-            <p class="hours-line">Monday through Friday</p>
-            <dl>
-              <div>
-                <dt>Arrival</dt>
-                <dd>8:00 AM-8:30 AM</dd>
-              </div>
-              <div>
-                <dt>Departure</dt>
-                <dd>4:00 PM-5:00 PM</dd>
-              </div>
-            </dl>
-            <p>
-              Flexible enrollment options of 2, 3, 4, or 5 days per week may be available depending
-              on classroom openings.
+              Sunflower Garden is located in Tiburon, California. To protect the privacy and safety
+              of the children, the street address is shared directly after a visit is arranged.
             </p>
           </aside>
         </div>
       </section>
 
       <section class="section pastel-peach">
-        <div class="section-shell split-copy">
-          <div>
-            <p class="section-label">Enrollment Agreement</p>
-            <h2>Consistency helps hold the small community.</h2>
+        <div class="section-shell">
+          <div class="center-heading">
+            <p class="section-label">Program Details</p>
+            <h2>Helpful information for your family.</h2>
           </div>
-          <div>
+          <dl class="fact-strip contact-facts">
+            <div>
+              <dt>Ages</dt>
+              <dd>3 months through kindergarten age</dd>
+            </div>
+            <div>
+              <dt>Days</dt>
+              <dd>Monday through Friday</dd>
+            </div>
+            <div>
+              <dt>Arrival</dt>
+              <dd>8:00–8:30 AM</dd>
+            </div>
+            <div>
+              <dt>Departure</dt>
+              <dd>4:00–5:00 PM</dd>
+            </div>
+          </dl>
+          <div class="contact-details">
             <p>
-              To provide consistency for every child and maintain the stability of our small
-              community, enrollment is offered on a month-to-month basis.
+              Enrollment for 2, 3, 4, or 5 days each week may be available, depending on classroom
+              openings. Homemade breakfast, lunch, and afternoon snacks are included.
             </p>
             <p>
-              We kindly ask families to provide 60 days' written notice if they plan to withdraw
-              their child from the program. This notice allows us to thoughtfully support each child's
-              transition while maintaining continuity for the children, families, and educators within
-              our community.
+              Enrollment is month to month. Families are asked to give 60 days' written notice
+              before withdrawing, so each child's transition and the small classroom community can
+              be supported thoughtfully.
             </p>
           </div>
         </div>
