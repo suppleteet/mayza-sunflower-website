@@ -16,6 +16,8 @@
   --sage: #d9b65f;
   --sage-light: #fff0d6;
   --sage-wash: #edf3e7;
+  --pastel-green: #dcebd4;
+  --pastel-green-deep: #83a07a;
   --sky: #f3c995;
   --sky-light: #fff0d6;
   --line: #e3dcd0;
@@ -580,8 +582,8 @@ main {
 
 .sun-icon {
   border-radius: 50%;
-  background: var(--butter);
-  box-shadow: inset 0 0 0 11px var(--sun);
+  background: var(--pastel-green);
+  box-shadow: inset 0 0 0 11px var(--pastel-green-deep);
 }
 
 .sun-icon::after {
@@ -594,7 +596,7 @@ main {
 
 .leaf-icon {
   border-radius: 50% 0 50% 0;
-  background: var(--leaf-muted);
+  background: var(--pastel-green-deep);
   transform: rotate(-18deg);
 }
 
@@ -611,6 +613,7 @@ main {
 
 .garden-icon::before {
   left: 8px;
+  background: var(--pastel-green-deep);
   transform: rotate(-18deg);
 }
 
@@ -621,7 +624,7 @@ main {
 }
 
 .circle-icon {
-  border: 4px solid var(--peach);
+  border: 4px solid var(--pastel-green-deep);
   border-radius: 50%;
 }
 
@@ -643,7 +646,7 @@ main {
 .circle-icon::after {
   right: 5px;
   bottom: 8px;
-  background: var(--sun);
+  background: var(--pastel-green);
 }
 
 .story-block {
@@ -792,8 +795,8 @@ main {
   max-width: 100%;
   padding: 0.9rem 1.85rem;
   border-radius: 999px;
-  border: 1px solid #d7c37f;
-  background: var(--butter);
+  border: 1px solid var(--pastel-green-deep);
+  background: var(--pastel-green);
   color: var(--olive-dark);
   font-size: 1.1rem;
   font-weight: 700;
@@ -879,9 +882,26 @@ main {
 
 .email-button:hover,
 .email-button:focus-visible {
-  background: var(--sun);
+  background: #c7dfbd;
   color: var(--olive-dark);
   transform: translateY(-1px);
+}
+
+.review-cta {
+  max-width: 520px;
+  margin: 3rem auto 0;
+  padding: 1.6rem 1.75rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.58);
+  text-align: center;
+}
+
+.review-cta .section-label {
+  font-size: 1.35rem;
+}
+
+.review-cta p:not(.section-label) {
+  color: var(--muted);
 }
 
 .care-list {
