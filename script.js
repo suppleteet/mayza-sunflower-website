@@ -33,7 +33,17 @@ if (navToggle && siteNav) {
 const emailForm = document.querySelector("[data-email-form]");
 
 if (emailForm) {
+  const mayzaEmail = "mayza@sunflowergardennursery.com";
   const emailStatus = emailForm.querySelector("[data-email-status]");
+  const emailFallback = emailForm.querySelector("[data-email-fallback]");
+  const fallbackText = emailForm.querySelector("[data-email-fallback-text]");
+  const copyButton = emailForm.querySelector("[data-email-copy]");
+  const fallbackToggle = emailForm.querySelector("[data-email-fallback-toggle]");
+
+  const revealFallback = () => {
+    emailFallback.hidden = false;
+    fallbackToggle.hidden = true;
+  };
 
   emailForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -43,21 +53,76 @@ if (emailForm) {
     }
 
     const formData = new FormData(emailForm);
-    const message = formData.get("message").trim();
+    const field = (name) => (formData.get(name) || "").trim();
+    const message = field("message");
     const lines = [
-      `Name: ${formData.get("parent-name").trim()}`,
-      `Email: ${formData.get("parent-email").trim()}`,
-      `Child's age: ${formData.get("child-age").trim()}`,
-      `Preferred days: ${formData.get("preferred-days").trim() || "Not specified"}`,
-      `Desired start date: ${formData.get("start-date").trim() || "Not specified"}`,
+      `Name: ${field("parent-name")}`,
+      `Email: ${field("parent-email")}`,
+      `Child's age: ${field("child-age")}`,
+      `Preferred days: ${field("preferred-days") || "Not specified"}`,
+      `Desired start date: ${field("start-date") || "Not specified"}`,
     ];
 
     if (message) {
       lines.push("", "Message:", message);
     }
 
-    window.location.href = `mailto:mayza@sunflowergardennursery.com?subject=${encodeURIComponent("Sunflower Garden inquiry")}&body=${encodeURIComponent(lines.join("\n"))}`;
-    emailStatus.textContent = "Your email app is opening with your note ready to send.";
+    const body = lines.join("\n");
+
+    fallbackText.value = body;
+    emailFallback.hidden = true;
+    fallbackToggle.hidden = true;
+    copyButton.textContent = "Copy this note";
+    emailStatus.textContent = "Opening your email…";
+
+    // Nothing reports back whether a mailto: handler actually opened. But when one does
+    // -- a desktop mail app, or a new tab for a web handler like Gmail -- the page loses
+    // focus, so treat that as the signal it worked. No focus change after a beat means
+    // nothing is registered here, and this visitor needs the copy-and-paste path.
+    let handedOff = false;
+    const noteBlur = () => {
+      handedOff = true;
+    };
+    const noteVisibility = () => {
+      if (document.hidden) {
+        handedOff = true;
+      }
+    };
+
+    window.addEventListener("blur", noteBlur);
+    document.addEventListener("visibilitychange", noteVisibility);
+
+    window.location.href = `mailto:${mayzaEmail}?subject=${encodeURIComponent("Sunflower Garden inquiry")}&body=${encodeURIComponent(body)}`;
+
+    window.setTimeout(() => {
+      window.removeEventListener("blur", noteBlur);
+      document.removeEventListener("visibilitychange", noteVisibility);
+
+      if (handedOff) {
+        emailStatus.textContent = "Your email is open with this note ready to send.";
+        fallbackToggle.hidden = false;
+        return;
+      }
+
+      emailStatus.textContent = `This device doesn't have an email app set up. Copy the note below and send it to ${mayzaEmail}.`;
+      revealFallback();
+    }, 1200);
+  });
+
+  fallbackToggle.addEventListener("click", revealFallback);
+
+  copyButton.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(fallbackText.value);
+      copyButton.textContent = "Copied";
+      window.setTimeout(() => {
+        copyButton.textContent = "Copy this note";
+      }, 2400);
+    } catch (error) {
+      fallbackText.focus();
+      fallbackText.select();
+      copyButton.textContent = "Press Ctrl+C to copy";
+    }
   });
 }
 
@@ -93,8 +158,11 @@ if (reviewCarousel) {
   };
 
   const moveReviews = (direction) => {
-    const { step, visibleCount, maxStart, currentIndex } = getMetrics();
-    const targetIndex = Math.min(maxStart, Math.max(0, currentIndex + direction * visibleCount));
+    // Steps one card at a time (rather than a full page of visibleCount cards) so the
+    // card just scrolled past stays peeking at the edge -- see the scroll-padding-inline
+    // on .review-track that reserves the room for it.
+    const { step, maxStart, currentIndex } = getMetrics();
+    const targetIndex = Math.min(maxStart, Math.max(0, currentIndex + direction));
     reviewTrack.scrollTo({ left: targetIndex * step, behavior: "smooth" });
   };
 
