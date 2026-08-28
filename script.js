@@ -61,6 +61,53 @@ if (emailForm) {
   });
 }
 
+const reviewCarousel = document.querySelector("[data-review-carousel]");
+
+if (reviewCarousel) {
+  const reviewTrack = reviewCarousel.querySelector("[data-review-track]");
+  const reviewCards = Array.from(reviewTrack.querySelectorAll(".review-card"));
+  const prevButton = reviewCarousel.querySelector("[data-review-prev]");
+  const nextButton = reviewCarousel.querySelector("[data-review-next]");
+  const reviewStatus = reviewCarousel.querySelector("[data-review-status]");
+  let updateFrame;
+
+  const getMetrics = () => {
+    const gap = Number.parseFloat(getComputedStyle(reviewTrack).gap) || 0;
+    const cardWidth = reviewCards[0]?.getBoundingClientRect().width || reviewTrack.clientWidth;
+    const step = cardWidth + gap;
+    const visibleCount = Math.max(1, Math.round((reviewTrack.clientWidth + gap) / step));
+    const maxStart = Math.max(0, reviewCards.length - visibleCount);
+    const currentIndex = Math.min(maxStart, Math.max(0, Math.round(reviewTrack.scrollLeft / step)));
+
+    return { step, visibleCount, maxStart, currentIndex };
+  };
+
+  const updateReviewControls = () => {
+    const { visibleCount, maxStart, currentIndex } = getMetrics();
+    const firstVisible = currentIndex + 1;
+    const lastVisible = Math.min(reviewCards.length, currentIndex + visibleCount);
+
+    prevButton.disabled = currentIndex === 0;
+    nextButton.disabled = currentIndex === maxStart;
+    reviewStatus.textContent = `Reviews ${firstVisible}–${lastVisible} of ${reviewCards.length}`;
+  };
+
+  const moveReviews = (direction) => {
+    const { step, visibleCount, maxStart, currentIndex } = getMetrics();
+    const targetIndex = Math.min(maxStart, Math.max(0, currentIndex + direction * visibleCount));
+    reviewTrack.scrollTo({ left: targetIndex * step, behavior: "smooth" });
+  };
+
+  prevButton.addEventListener("click", () => moveReviews(-1));
+  nextButton.addEventListener("click", () => moveReviews(1));
+  reviewTrack.addEventListener("scroll", () => {
+    window.cancelAnimationFrame(updateFrame);
+    updateFrame = window.requestAnimationFrame(updateReviewControls);
+  }, { passive: true });
+  window.addEventListener("resize", updateReviewControls);
+  updateReviewControls();
+}
+
 const photoTiles = Array.from(document.querySelectorAll(".photo-tile"));
 const lightbox = document.getElementById("lightbox");
 
